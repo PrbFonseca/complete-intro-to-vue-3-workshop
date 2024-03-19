@@ -6,5 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground — Complete Intro to Vue 3</title>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+      <h3>Characters: </h3>
+      <ul v-if="characters.length > 0">
+        <li v-for="character in characters">{{ character }}</li>
+      </ul>
+      <p v-else> No chracters</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+
+      const app = createApp({
+        data() {
+          return {
+            message: "test",
+            title: "Stormlight Archive",
+            characters: ["Dalinar", "Jasnah", "Adolin" , "Kaladin"]          
+          }
+        }
+      });
+
+      app.mount('#app');
+    </script>
+  </body>
+
 </html>
