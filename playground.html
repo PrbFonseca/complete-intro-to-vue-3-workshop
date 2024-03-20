@@ -10,27 +10,33 @@
     <div id="app">
       <h1>{{ title }}</h1>
       <h3>Characters: </h3>
-      <ul v-if="characters.length > 0">
-        <li v-for="character in characters">{{ character }}</li>
+      <p v-if="characterList.length === 0"> There are no characters</p>
+      <ul v-else>
+        <li v-for="character in characterList">{{ character.name }}</li>
       </ul>
-      <p v-else> No chracters</p>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
-      const { createApp } = Vue;
-
-      const app = createApp({
-        data() {
-          return {
-            message: "test",
+      Vue.createApp({
+        data: () => ({
             title: "Stormlight Archive",
-            characters: ["Dalinar", "Jasnah", "Adolin" , "Kaladin"]          
-          }
-        }
-      });
-
-      app.mount('#app');
+            characterList: [
+              { 
+                name: 'Dalinar'
+              },
+              { 
+                name: 'Jasnah'
+              },
+              { 
+                name: 'Shallan'
+              },
+              {
+                name: 'Navani'
+              }, 
+            ]           
+        })
+      }).mount('#app');
     </script>
   </body>
 
